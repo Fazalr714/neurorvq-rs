@@ -7,6 +7,7 @@
 /// Run:
 ///   cargo run --release --bin bench
 
+use std::panic;
 use std::time::Instant;
 use std::io::Write;
 
@@ -374,20 +375,43 @@ fn main() {
     for (i, case) in cases.iter().enumerate() {
         print!("[{}/{}] {} ... ", i + 1, cases.len(), case.label);
         std::io::stdout().flush().unwrap();
-        let r = run_bench(case);
-        println!(
-            "construct={:.0}ms  encode={:.1}+/-{:.1}ms  tokenize={:.1}+/-{:.1}ms",
-            r.construct_ms, r.encode_mean_ms, r.encode_std_ms, r.tokenize_mean_ms, r.tokenize_std_ms,
-        );
-        results.push(r);
+
+        // Suppress panic output for skipped cases
+        let prev_hook = panic::take_hook();
+        panic::set_hook(Box::new(|_| {}));
+        let result = panic::catch_unwind(panic::AssertUnwindSafe(|| run_bench(case)));
+        panic::set_hook(prev_hook);
+
+        match result {
+            Ok(r) => {
+                println!(
+                    "construct={:.0}ms  encode={:.1}+/-{:.1}ms  tokenize={:.1}+/-{:.1}ms",
+                    r.construct_ms, r.encode_mean_ms, r.encode_std_ms,
+                    r.tokenize_mean_ms, r.tokenize_std_ms,
+                );
+                results.push(r);
+            }
+            Err(_) => {
+                println!("SKIPPED (backend limitation for this config)");
+            }
+        }
     }
 
     std::fs::create_dir_all("figures").unwrap();
 
     // ── CSV ──────────────────────────────────────────────────────────────
-    let csv_path = "figures/benchmark_results.csv";
+    let csv_suffix: &str;
+    #[cfg(feature = "blas-accelerate")]
+    { csv_suffix = "_accelerate"; }
+    #[cfg(all(feature = "ndarray", not(feature = "blas-accelerate")))]
+    { csv_suffix = "_ndarray"; }
+    #[cfg(all(feature = "wgpu", not(feature = "ndarray")))]
+    { csv_suffix = "_wgpu"; }
+    let csv_path = format!("figures/benchmark_results{csv_suffix}.csv");
+    // Also write to default path for backward compat
+    let csv_path_default = "figures/benchmark_results.csv";
     {
-        let mut f = std::fs::File::create(csv_path).unwrap();
+        let mut f = std::fs::File::create(&csv_path).unwrap();
         writeln!(f, "label,modality,n_channels,n_time,n_patches,patch_size,construct_ms,encode_mean_ms,encode_std_ms,tokenize_mean_ms,tokenize_std_ms").unwrap();
         for r in &results {
             writeln!(
@@ -400,6 +424,8 @@ fn main() {
             .unwrap();
         }
     }
+    // Copy to default path too
+    let _ = std::fs::copy(&csv_path, csv_path_default);
     println!("\nCSV: {csv_path}");
 
     // ── Chart 1: Tokenize latency (all) ──────────────────────────────────

@@ -209,20 +209,15 @@ save_file(state_dict, "model.safetensors")
 **Platform:** Apple M4 Pro, 64 GB RAM, macOS (arm64)
 **Backend:** NdArray + Rayon (CPU, multi-threaded)
 
-| Configuration | Modality | Channels | Patches | Construct (ms) | Encode (ms) | Tokenize (ms) |
-|---|---|---:|---:|---:|---:|---:|
-| EEG 4ch ×64t | EEG | 4 | 64 | 60 | 831.2 ± 4.3 | 832.0 ± 4.4 |
-| EEG 8ch ×32t | EEG | 8 | 32 | 12 | 831.8 ± 4.6 | 832.2 ± 3.7 |
-| EEG 16ch ×16t | EEG | 16 | 16 | 12 | 831.1 ± 4.6 | 833.5 ± 4.2 |
-| EEG 32ch ×8t | EEG | 32 | 8 | 12 | 834.0 ± 4.2 | 832.7 ± 5.0 |
-| EEG 64ch ×4t | EEG | 64 | 4 | 12 | 834.8 ± 4.0 | 835.7 ± 4.4 |
-| ECG 4ch ×150t | ECG | 4 | 150 | 11 | 2169.4 ± 2.4 | 2170.6 ± 4.4 |
-| ECG 8ch ×75t | ECG | 8 | 75 | 11 | 2176.7 ± 13.6 | 2172.7 ± 3.5 |
-| ECG 12ch ×50t | ECG | 12 | 50 | 12 | 2174.8 ± 4.0 | 2175.7 ± 3.2 |
-| ECG 15ch ×40t | ECG | 15 | 40 | 13 | 2177.9 ± 4.1 | 2179.7 ± 2.8 |
-| EMG 4ch ×64t | EMG | 4 | 64 | 64 | 1311.4 ± 3.4 | 1311.5 ± 5.2 |
-| EMG 8ch ×32t | EMG | 8 | 32 | 25 | 1315.8 ± 4.7 | 1314.4 ± 4.9 |
-| EMG 16ch ×16t | EMG | 16 | 16 | 25 | 1315.5 ± 3.7 | 1317.8 ± 3.5 |
+| Configuration | Modality | NdArray CPU (ms) | wgpu GPU (ms) |
+|---|---|---:|---:|
+| EEG 4ch ×64t | EEG | 848 | 445 |
+| EEG 16ch ×16t | EEG | 849 | 432 |
+| EEG 64ch ×4t | EEG | 854 | 411 |
+| ECG 4ch ×150t | ECG | 2212 | — |
+| ECG 15ch ×40t | ECG | 2224 | — |
+| EMG 4ch ×64t | EMG | 1343 | 617 |
+| EMG 16ch ×16t | EMG | 1349 | 660 |
 
 ### Tokenize Latency
 
@@ -251,35 +246,44 @@ save_file(state_dict, "model.safetensors")
 
 ## Rust vs Python Comparison
 
-**Python:** PyTorch 2.8.0 (CPU) — same platform (Apple M4 Pro)
+**Platform:** Apple M4 Pro, 64 GB RAM, macOS (arm64)  
+**Rust backends:** Burn NdArray+Rayon (CPU), Burn wgpu (GPU)  
+**Python:** PyTorch 2.8.0 (CPU)
 
-| Configuration | Modality | Rust (ms) | Python (ms) | Ratio (Rust/Py) |
-|---|---|---:|---:|---:|
-| EEG 4ch ×64t | EEG | 832.0 ± 4.4 | 179.0 ± 3.0 | 4.6x |
-| EEG 16ch ×16t | EEG | 833.5 ± 4.2 | 179.7 ± 3.1 | 4.6x |
-| EEG 64ch ×4t | EEG | 835.7 ± 4.4 | 178.5 ± 2.8 | 4.7x |
-| ECG 4ch ×150t | ECG | 2170.6 ± 4.4 | 272.0 ± 5.6 | 8.0x |
-| ECG 15ch ×40t | ECG | 2179.7 ± 2.8 | 272.0 ± 4.6 | 8.0x |
-| EMG 4ch ×64t | EMG | 1311.5 ± 5.2 | 254.7 ± 4.6 | 5.1x |
-| EMG 16ch ×16t | EMG | 1317.8 ± 3.5 | 254.2 ± 4.0 | 5.2x |
+| Configuration | Modality | NdArray (ms) | wgpu (ms) | PyTorch (ms) | GPU speedup |
+|---|---|---:|---:|---:|---:|
+| EEG 4ch ×64t | EEG | 848 | **445** | 179 | 1.9× vs NdArray |
+| EEG 16ch ×16t | EEG | 849 | **432** | 180 | 2.0× vs NdArray |
+| EEG 64ch ×4t | EEG | 854 | **411** | 179 | 2.1× vs NdArray |
+| ECG 15ch ×40t | ECG | 2224 | —¹ | 272 | — |
+| EMG 4ch ×64t | EMG | 1343 | **617** | 255 | 2.2× vs NdArray |
+| EMG 16ch ×16t | EMG | 1349 | **660** | 254 | 2.0× vs NdArray |
 
-### Tokenize Latency: Rust vs Python
+¹ ECG skipped on wgpu due to burn-wgpu shared memory limitation with embed_dim=40
 
-![Tokenize Comparison](figures/compare_tokenize.svg)
+### Tokenize Latency: All Backends
 
-### Time Ratio (Rust / Python)
+![Tokenize Comparison](figures/compare_all_tokenize.svg)
 
-![Speed Ratio](figures/compare_ratio.svg)
+### Summary
 
-### Why Python is faster (for now)
+| Comparison | Ratio |
+|---|---:|
+| **wgpu vs NdArray** | wgpu is **2.0× faster** (GPU acceleration) |
+| **wgpu vs PyTorch** | PyTorch is **2.4× faster** than wgpu |
+| **NdArray vs PyTorch** | PyTorch is **4.7× faster** than NdArray |
 
-PyTorch 2.8 on Apple Silicon uses highly optimized **Apple Accelerate / AMX** BLAS kernels and **MPS-level fused operators** for matrix multiplication, attention, and layer normalization. The Rust Burn `NdArray` backend uses generic Rayon-parallelized BLAS without hardware-specific fused kernels.
+### Why PyTorch is faster
 
-**Expected improvements:**
-- `--features blas-accelerate` — enables Apple Accelerate BLAS for NdArray (significant speedup on Apple Silicon)
-- `--features metal` — wgpu Metal backend with GPU compute shaders
-- Burn’s ongoing GEMM / fused-attention optimizations
-- The Rust implementation has **zero Python overhead**, no GIL, and can be embedded in real-time pipelines, mobile apps, and edge devices where PyTorch is unavailable
+PyTorch 2.8 on Apple Silicon uses highly optimized **Apple Accelerate / AMX** BLAS kernels and **fused operators** for matrix multiplication, attention, and layer normalization. The Burn backends are improving rapidly but don’t yet have the same level of hardware-specific kernel fusion.
+
+### Why Rust matters anyway
+
+- **Zero Python dependencies** — no interpreter, no GIL, no pip
+- **Embeddable** — real-time pipelines, mobile apps, edge devices, WASM
+- **wgpu GPU already halves latency** vs CPU, and Burn’s GPU kernels are actively improving
+- **Deterministic memory** — no garbage collector pauses
+- **Single static binary** — deploy anywhere without a Python environment
 
 ### Re-run Benchmarks
 
