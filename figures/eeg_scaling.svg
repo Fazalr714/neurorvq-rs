@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="352" height="430" font-family="system-ui,-apple-system,sans-serif" font-size="12">
+<rect width="352" height="430" fill="white"/>
+<text x="176" y="28" text-anchor="middle" font-size="15" font-weight="600">EEG Tokenize Latency vs Channel Count</text>
+<line x1="80" y1="310" x2="332" y2="310" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="314" text-anchor="end" fill="#666" font-size="10">0.0</text>
+<line x1="80" y1="258" x2="332" y2="258" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="262" text-anchor="end" fill="#666" font-size="10">193.2</text>
+<line x1="80" y1="206" x2="332" y2="206" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="210" text-anchor="end" fill="#666" font-size="10">386.5</text>
+<line x1="80" y1="154" x2="332" y2="154" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="158" text-anchor="end" fill="#666" font-size="10">579.7</text>
+<line x1="80" y1="101.99999999999999" x2="332" y2="101.99999999999999" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="105.99999999999999" text-anchor="end" fill="#666" font-size="10">772.9</text>
+<line x1="80" y1="50" x2="332" y2="50" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="54" text-anchor="end" fill="#666" font-size="10">966.2</text>
+<text x="14" y="180" text-anchor="middle" transform="rotate(-90,14,180)" fill="#333" font-size="11">Latency (ms)</text>
+<rect x="92" y="86.09276145639757" width="36" height="223.90723854360243" fill="#4285f4" rx="3"/>
+<line x1="110" y1="84.9033836872345" x2="110" y2="87.28213922556064" stroke="#333" stroke-width="1.5"/>
+<line x1="106" y1="84.9033836872345" x2="114" y2="84.9033836872345" stroke="#333" stroke-width="1.5"/>
+<line x1="106" y1="87.28213922556064" x2="114" y2="87.28213922556064" stroke="#333" stroke-width="1.5"/>
+<text x="110" y="80.09276145639757" text-anchor="middle" fill="#333" font-size="9">832.0</text>
+<text x="110" y="320" text-anchor="start" transform="rotate(45,110,320)" fill="#333" font-size="10">4ch</text>
+<rect x="140" y="86.03926086777832" width="36" height="223.96073913222168" fill="#4285f4" rx="3"/>
+<line x1="158" y1="85.04014834578936" x2="158" y2="87.03837338976729" stroke="#333" stroke-width="1.5"/>
+<line x1="154" y1="85.04014834578936" x2="162" y2="85.04014834578936" stroke="#333" stroke-width="1.5"/>
+<line x1="154" y1="87.03837338976729" x2="162" y2="87.03837338976729" stroke="#333" stroke-width="1.5"/>
+<text x="158" y="80.03926086777832" text-anchor="middle" fill="#333" font-size="9">832.2</text>
+<text x="158" y="320" text-anchor="start" transform="rotate(45,158,320)" fill="#333" font-size="10">8ch</text>
+<rect x="188" y="85.68919749858762" width="36" height="224.31080250141238" fill="#4285f4" rx="3"/>
+<line x1="206" y1="84.56223964871923" x2="206" y2="86.81615534845601" stroke="#333" stroke-width="1.5"/>
+<line x1="202" y1="84.56223964871923" x2="210" y2="84.56223964871923" stroke="#333" stroke-width="1.5"/>
+<line x1="202" y1="86.81615534845601" x2="210" y2="86.81615534845601" stroke="#333" stroke-width="1.5"/>
+<text x="206" y="79.68919749858762" text-anchor="middle" fill="#333" font-size="9">833.5</text>
+<text x="206" y="320" text-anchor="start" transform="rotate(45,206,320)" fill="#333" font-size="10">16ch</text>
+<rect x="236" y="85.91599631935091" width="36" height="224.0840036806491" fill="#4285f4" rx="3"/>
+<line x1="254" y1="84.57602550257855" x2="254" y2="87.25596713612327" stroke="#333" stroke-width="1.5"/>
+<line x1="250" y1="84.57602550257855" x2="258" y2="84.57602550257855" stroke="#333" stroke-width="1.5"/>
+<line x1="250" y1="87.25596713612327" x2="258" y2="87.25596713612327" stroke="#333" stroke-width="1.5"/>
+<text x="254" y="79.91599631935091" text-anchor="middle" fill="#333" font-size="9">832.7</text>
+<text x="254" y="320" text-anchor="start" transform="rotate(45,254,320)" fill="#333" font-size="10">32ch</text>
+<rect x="284" y="85.10214734988463" width="36" height="224.89785265011537" fill="#4285f4" rx="3"/>
+<line x1="302" y1="83.91304347826086" x2="302" y2="86.2912512215084" stroke="#333" stroke-width="1.5"/>
+<line x1="298" y1="83.91304347826086" x2="306" y2="83.91304347826086" stroke="#333" stroke-width="1.5"/>
+<line x1="298" y1="86.2912512215084" x2="306" y2="86.2912512215084" stroke="#333" stroke-width="1.5"/>
+<text x="302" y="79.10214734988463" text-anchor="middle" fill="#333" font-size="9">835.7</text>
+<text x="302" y="320" text-anchor="start" transform="rotate(45,302,320)" fill="#333" font-size="10">64ch</text>
+</svg>

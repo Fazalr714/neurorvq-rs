@@ -1,0 +1,52 @@
+[package]
+name = "neurorvq-rs"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "NeuroRVQ biosignal tokenizer — inference in Rust with Burn ML"
+keywords = ["eeg", "emg", "ecg", "tokenizer", "BCI"]
+categories = ["science", "algorithms"]
+authors = ["Eugene Hauptmann <eugene@reactivelions.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/eugenehp/neurorvq-rs"
+homepage = "https://github.com/eugenehp/neurorvq-rs"
+readme = "README.md"
+
+[lib]
+name = "neurorvq_rs"
+path = "src/lib.rs"
+
+[[bin]]
+name = "infer"
+path = "src/bin/infer.rs"
+
+[features]
+default = ["ndarray"]
+
+# CPU backends
+ndarray         = ["dep:burn-ndarray", "burn/ndarray"]
+blas-accelerate = ["burn-ndarray?/blas-accelerate"]
+
+# GPU backend
+wgpu            = ["burn/wgpu"]
+metal           = ["wgpu", "burn-wgpu/metal"]
+vulkan          = ["wgpu", "burn-wgpu/vulkan"]
+
+[dependencies]
+burn = { version = "0.20.1", default-features = false, features = ["std", "simd"] }
+burn-ndarray = { version = "0.20.1", default-features = false, features = ["std", "simd", "multi-threads"], optional = true }
+burn-wgpu = { version = "0.20.1", default-features = true, optional = true }
+
+safetensors = "0.7"
+half = { version = "2", features = ["bytemuck"] }
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+anyhow = "1"
+bytemuck = { version = "1", features = ["derive"] }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
