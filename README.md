@@ -249,10 +249,49 @@ save_file(state_dict, "model.safetensors")
 - **Latency is dominated by the transformer** — the total patch count is the primary scaling factor, not channel vs time decomposition
 - Standard deviation is consistently **< 1%** of the mean, indicating stable performance
 
+## Rust vs Python Comparison
+
+**Python:** PyTorch 2.8.0 (CPU) — same platform (Apple M4 Pro)
+
+| Configuration | Modality | Rust (ms) | Python (ms) | Ratio (Rust/Py) |
+|---|---|---:|---:|---:|
+| EEG 4ch ×64t | EEG | 832.0 ± 4.4 | 179.0 ± 3.0 | 4.6x |
+| EEG 16ch ×16t | EEG | 833.5 ± 4.2 | 179.7 ± 3.1 | 4.6x |
+| EEG 64ch ×4t | EEG | 835.7 ± 4.4 | 178.5 ± 2.8 | 4.7x |
+| ECG 4ch ×150t | ECG | 2170.6 ± 4.4 | 272.0 ± 5.6 | 8.0x |
+| ECG 15ch ×40t | ECG | 2179.7 ± 2.8 | 272.0 ± 4.6 | 8.0x |
+| EMG 4ch ×64t | EMG | 1311.5 ± 5.2 | 254.7 ± 4.6 | 5.1x |
+| EMG 16ch ×16t | EMG | 1317.8 ± 3.5 | 254.2 ± 4.0 | 5.2x |
+
+### Tokenize Latency: Rust vs Python
+
+![Tokenize Comparison](figures/compare_tokenize.svg)
+
+### Time Ratio (Rust / Python)
+
+![Speed Ratio](figures/compare_ratio.svg)
+
+### Why Python is faster (for now)
+
+PyTorch 2.8 on Apple Silicon uses highly optimized **Apple Accelerate / AMX** BLAS kernels and **MPS-level fused operators** for matrix multiplication, attention, and layer normalization. The Rust Burn `NdArray` backend uses generic Rayon-parallelized BLAS without hardware-specific fused kernels.
+
+**Expected improvements:**
+- `--features blas-accelerate` — enables Apple Accelerate BLAS for NdArray (significant speedup on Apple Silicon)
+- `--features metal` — wgpu Metal backend with GPU compute shaders
+- Burn’s ongoing GEMM / fused-attention optimizations
+- The Rust implementation has **zero Python overhead**, no GIL, and can be embedded in real-time pipelines, mobile apps, and edge devices where PyTorch is unavailable
+
 ### Re-run Benchmarks
 
 ```bash
+# Rust only
 cargo run --release --bin bench
+
+# Python only
+python3 scripts/bench_python.py
+
+# Generate comparison charts
+python3 scripts/compare_benchmarks.py
 ```
 
 Results are written to `figures/`.

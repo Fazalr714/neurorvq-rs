@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="956" height="440" font-family="system-ui,-apple-system,sans-serif" font-size="12">
+<rect width="956" height="440" fill="white"/>
+<text x="478.0" y="28" text-anchor="middle" font-size="15" font-weight="600">Encode Latency: Rust (Burn) vs Python (PyTorch)</text>
+<line x1="80" y1="310.0" x2="816" y2="310.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="314.0" text-anchor="end" fill="#666" font-size="10">0</text>
+<line x1="80" y1="258.0" x2="816" y2="258.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="262.0" text-anchor="end" fill="#666" font-size="10">504</text>
+<line x1="80" y1="206.0" x2="816" y2="206.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="210.0" text-anchor="end" fill="#666" font-size="10">1008</text>
+<line x1="80" y1="154.0" x2="816" y2="154.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="158.0" text-anchor="end" fill="#666" font-size="10">1511</text>
+<line x1="80" y1="101.99999999999999" x2="816" y2="101.99999999999999" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="105.99999999999999" text-anchor="end" fill="#666" font-size="10">2015</text>
+<line x1="80" y1="50.0" x2="816" y2="50.0" stroke="#e0e0e0" stroke-width="1"/>
+<text x="74" y="54.0" text-anchor="end" fill="#666" font-size="10">2519</text>
+<text x="14" y="180.0" text-anchor="middle" transform="rotate(-90,14,180.0)" fill="#333" font-size="11">Latency (ms)</text>
+<rect x="96" y="224.19909783224062" width="18" height="85.80090216775938" fill="#e8710a" rx="2"/>
+<text x="105.0" y="220.19909783224062" text-anchor="middle" fill="#333" font-size="8">831</text>
+<line x1="105.0" y1="223.75214286678454" x2="105.0" y2="224.6460527976967" stroke="#333" stroke-width="1"/>
+<rect x="122" y="291.4044175634483" width="18" height="18.595582436551684" fill="#306998" rx="2"/>
+<text x="131.0" y="287.4044175634483" text-anchor="middle" fill="#333" font-size="8">180</text>
+<line x1="131.0" y1="291.10226558641614" x2="131.0" y2="291.7065695404805" stroke="#333" stroke-width="1"/>
+<text x="118.0" y="320" text-anchor="start" transform="rotate(45,118.0,320)" fill="#333" font-size="10">EEG 4ch x64t</text>
+<rect x="156" y="224.14335749012832" width="18" height="85.85664250987168" fill="#e8710a" rx="2"/>
+<text x="165.0" y="220.14335749012832" text-anchor="middle" fill="#333" font-size="8">832</text>
+<line x1="165.0" y1="223.66440343938555" x2="165.0" y2="224.6223115408711" stroke="#333" stroke-width="1"/>
+<rect x="182" y="291.4811237681742" width="18" height="18.518876231825807" fill="#306998" rx="2"/>
+<text x="191.0" y="287.4811237681742" text-anchor="middle" fill="#333" font-size="8">179</text>
+<line x1="191.0" y1="291.23570471384613" x2="191.0" y2="291.72654282250227" stroke="#333" stroke-width="1"/>
+<text x="178.0" y="320" text-anchor="start" transform="rotate(45,178.0,320)" fill="#333" font-size="10">EEG 8ch x32t</text>
+<rect x="216" y="224.2125168034899" width="18" height="85.78748319651011" fill="#e8710a" rx="2"/>
+<text x="225.0" y="220.2125168034899" text-anchor="middle" fill="#333" font-size="8">831</text>
+<line x1="225.0" y1="223.74182058120823" x2="225.0" y2="224.68321302577158" stroke="#333" stroke-width="1"/>
+<rect x="242" y="291.2032719533179" width="18" height="18.79672804668212" fill="#306998" rx="2"/>
+<text x="251.0" y="287.2032719533179" text-anchor="middle" fill="#333" font-size="8">182</text>
+<line x1="251.0" y1="290.40760493746956" x2="251.0" y2="291.9989389691662" stroke="#333" stroke-width="1"/>
+<text x="238.0" y="320" text-anchor="start" transform="rotate(45,238.0,320)" fill="#333" font-size="10">EEG 16ch x16t</text>
+<rect x="276" y="223.91213829321802" width="18" height="86.08786170678198" fill="#e8710a" rx="2"/>
+<text x="285.0" y="219.91213829321802" text-anchor="middle" fill="#333" font-size="8">834</text>
+<line x1="285.0" y1="223.4755056133383" x2="285.0" y2="224.34877097309774" stroke="#333" stroke-width="1"/>
+<rect x="302" y="291.67123406020755" width="18" height="18.328765939792476" fill="#306998" rx="2"/>
+<text x="311.0" y="287.67123406020755" text-anchor="middle" fill="#333" font-size="8">178</text>
+<line x1="311.0" y1="291.4627359236087" x2="311.0" y2="291.8797321968064" stroke="#333" stroke-width="1"/>
+<text x="298.0" y="320" text-anchor="start" transform="rotate(45,298.0,320)" fill="#333" font-size="10">EEG 32ch x8t</text>
+<rect x="336" y="223.83472115139537" width="18" height="86.16527884860463" fill="#e8710a" rx="2"/>
+<text x="345.0" y="219.83472115139537" text-anchor="middle" fill="#333" font-size="8">835</text>
+<line x1="345.0" y1="223.4259586425718" x2="345.0" y2="224.24348366021894" stroke="#333" stroke-width="1"/>
+<rect x="362" y="291.5673759400228" width="18" height="18.432624059977183" fill="#306998" rx="2"/>
+<text x="371.0" y="287.5673759400228" text-anchor="middle" fill="#333" font-size="8">179</text>
+<line x1="371.0" y1="291.31827775657445" x2="371.0" y2="291.8164741234712" stroke="#333" stroke-width="1"/>
+<text x="358.0" y="320" text-anchor="start" transform="rotate(45,358.0,320)" fill="#333" font-size="10">EEG 64ch x4t</text>
+<rect x="396" y="86.06524002093045" width="18" height="223.93475997906955" fill="#e8710a" rx="2"/>
+<text x="405.0" y="82.06524002093045" text-anchor="middle" fill="#333" font-size="8">2169</text>
+<line x1="405.0" y1="85.81647293854034" x2="405.0" y2="86.31400710332055" stroke="#333" stroke-width="1"/>
+<rect x="422" y="281.93212147027464" width="18" height="28.067878529725334" fill="#306998" rx="2"/>
+<text x="431.0" y="277.93212147027464" text-anchor="middle" fill="#333" font-size="8">272</text>
+<line x1="431.0" y1="281.30733738714815" x2="431.0" y2="282.5569055534011" stroke="#333" stroke-width="1"/>
+<text x="418.0" y="320" text-anchor="start" transform="rotate(45,418.0,320)" fill="#333" font-size="10">ECG 4ch x150t</text>
+<rect x="456" y="85.31584208808721" width="18" height="224.6841579119128" fill="#e8710a" rx="2"/>
+<text x="465.0" y="81.31584208808721" text-anchor="middle" fill="#333" font-size="8">2177</text>
+<line x1="465.0" y1="83.91304347826087" x2="465.0" y2="86.71864069791354" stroke="#333" stroke-width="1"/>
+<rect x="482" y="282.11849463042637" width="18" height="27.88150536957365" fill="#306998" rx="2"/>
+<text x="491.0" y="278.11849463042637" text-anchor="middle" fill="#333" font-size="8">270</text>
+<line x1="491.0" y1="281.6272940376911" x2="491.0" y2="282.6096952231616" stroke="#333" stroke-width="1"/>
+<text x="478.0" y="320" text-anchor="start" transform="rotate(45,478.0,320)" fill="#333" font-size="10">ECG 8ch x75t</text>
+<rect x="516" y="85.50990105692267" width="18" height="224.49009894307733" fill="#e8710a" rx="2"/>
+<text x="525.0" y="81.50990105692267" text-anchor="middle" fill="#333" font-size="8">2175</text>
+<line x1="525.0" y1="85.09597740531093" x2="525.0" y2="85.92382470853441" stroke="#333" stroke-width="1"/>
+<rect x="542" y="281.91781820946454" width="18" height="28.082181790535444" fill="#306998" rx="2"/>
+<text x="551.0" y="277.91781820946454" text-anchor="middle" fill="#333" font-size="8">272</text>
+<line x1="551.0" y1="281.3657190170368" x2="551.0" y2="282.4699174018923" stroke="#333" stroke-width="1"/>
+<text x="538.0" y="320" text-anchor="start" transform="rotate(45,538.0,320)" fill="#333" font-size="10">ECG 12ch x50t</text>
+<rect x="576" y="85.19610357540154" width="18" height="224.80389642459846" fill="#e8710a" rx="2"/>
+<text x="585.0" y="81.19610357540154" text-anchor="middle" fill="#333" font-size="8">2178</text>
+<line x1="585.0" y1="84.77392209532871" x2="585.0" y2="85.61828505547436" stroke="#333" stroke-width="1"/>
+<rect x="602" y="281.85228891362704" width="18" height="28.147711086372958" fill="#306998" rx="2"/>
+<text x="611.0" y="277.85228891362704" text-anchor="middle" fill="#333" font-size="8">273</text>
+<line x1="611.0" y1="281.25809251460174" x2="611.0" y2="282.4464853126523" stroke="#333" stroke-width="1"/>
+<text x="598.0" y="320" text-anchor="start" transform="rotate(45,598.0,320)" fill="#333" font-size="10">ECG 15ch x40t</text>
+<rect x="636" y="174.6366436373829" width="18" height="135.3633563626171" fill="#e8710a" rx="2"/>
+<text x="645.0" y="170.6366436373829" text-anchor="middle" fill="#333" font-size="8">1311</text>
+<line x1="645.0" y1="174.28362147067162" x2="645.0" y2="174.98966580409416" stroke="#333" stroke-width="1"/>
+<rect x="662" y="283.7186643931172" width="18" height="26.281335606882788" fill="#306998" rx="2"/>
+<text x="671.0" y="279.7186643931172" text-anchor="middle" fill="#333" font-size="8">255</text>
+<line x1="671.0" y1="283.2355276280633" x2="671.0" y2="284.20180115817107" stroke="#333" stroke-width="1"/>
+<text x="658.0" y="320" text-anchor="start" transform="rotate(45,658.0,320)" fill="#333" font-size="10">EMG 4ch x64t</text>
+<rect x="696" y="174.1803986149081" width="18" height="135.8196013850919" fill="#e8710a" rx="2"/>
+<text x="705.0" y="170.1803986149081" text-anchor="middle" fill="#333" font-size="8">1316</text>
+<line x1="705.0" y1="173.691122278589" x2="705.0" y2="174.66967495122722" stroke="#333" stroke-width="1"/>
+<rect x="722" y="283.77294840524667" width="18" height="26.227051594753355" fill="#306998" rx="2"/>
+<text x="731.0" y="279.77294840524667" text-anchor="middle" fill="#333" font-size="8">254</text>
+<line x1="731.0" y1="283.3302990765603" x2="731.0" y2="284.215597733933" stroke="#333" stroke-width="1"/>
+<text x="718.0" y="320" text-anchor="start" transform="rotate(45,718.0,320)" fill="#333" font-size="10">EMG 8ch x32t</text>
+<rect x="756" y="174.21446215731004" width="18" height="135.78553784268996" fill="#e8710a" rx="2"/>
+<text x="765.0" y="170.21446215731004" text-anchor="middle" fill="#333" font-size="8">1315</text>
+<line x1="765.0" y1="173.832537590985" x2="765.0" y2="174.59638672363508" stroke="#333" stroke-width="1"/>
+<rect x="782" y="282.9807280784432" width="18" height="27.019271921556815" fill="#306998" rx="2"/>
+<text x="791.0" y="278.9807280784432" text-anchor="middle" fill="#333" font-size="8">262</text>
+<line x1="791.0" y1="281.17863161274283" x2="791.0" y2="284.7828245441435" stroke="#333" stroke-width="1"/>
+<text x="778.0" y="320" text-anchor="start" transform="rotate(45,778.0,320)" fill="#333" font-size="10">EMG 16ch x16t</text>
+<rect x="832" y="70" width="14" height="14" fill="#e8710a" rx="2"/>
+<text x="852" y="81" fill="#333" font-size="11">Rust (Burn)</text>
+<rect x="832" y="94" width="14" height="14" fill="#306998" rx="2"/>
+<text x="852" y="105" fill="#333" font-size="11">Python (PyTorch)</text>
+</svg>
